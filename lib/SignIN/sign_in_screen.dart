@@ -46,7 +46,7 @@ Future<UserCredential?> signInWithGoogle(BuildContext context) async {
     final UserCredential userCredential =
     await _auth.signInWithCredential(credential);
     print(googleUser.displayName);
-    UserInfoProvider.saveUserInfo(googleUser.displayName!, googleUser.email, googleUser.id);
+    UserInfoProvider.saveUserInfo(googleUser.displayName!, googleUser.email, googleUser.id, googleUser.photoUrl!);
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage(),));
     return userCredential;
   } on GoogleSignInException catch (e) {
@@ -70,13 +70,23 @@ Future<void> signOut() async {
 
 User? get currentUser => _auth.currentUser;
 
+Future<void> checkLogin(BuildContext context) async {
+  bool isLoggedIn = await UserInfoProvider.isLogedin();
+
+  if (isLoggedIn) {
+    print("User is logged in");
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserInfoScreen(),));
+  } else {
+    print("User is not logged in");
+  }
+}
+
 class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    if(UserInfoProvider.isLogedin()==true){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => UserInfoScreen(),));
-    }
+    checkLogin(context);
+
 
     super.initState();
   }
