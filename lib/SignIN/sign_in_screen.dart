@@ -7,6 +7,7 @@ import 'package:our_chat/Screens/landing_page.dart';
 import 'package:our_chat/SignIN/auth_service.dart';
 import 'package:our_chat/SignIN/user_info.dart';
 import 'package:our_chat/Widget/background.dart';
+import 'package:provider/provider.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -46,7 +47,8 @@ Future<UserCredential?> signInWithGoogle(BuildContext context) async {
     final UserCredential userCredential =
     await _auth.signInWithCredential(credential);
     print(googleUser.displayName);
-    UserInfoProvider.saveUserInfo(googleUser.displayName!, googleUser.email, googleUser.id, googleUser.photoUrl!);
+    final provider = context.read<UserInfoProvider>();
+    provider.saveUserInfo(googleUser.displayName!, googleUser.email, googleUser.id, googleUser.photoUrl!);
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage(),));
     return userCredential;
   } on GoogleSignInException catch (e) {
@@ -71,7 +73,9 @@ Future<void> signOut() async {
 User? get currentUser => _auth.currentUser;
 
 Future<void> checkLogin(BuildContext context) async {
-  bool isLoggedIn = await UserInfoProvider.isLogedin();
+  final provider = context.read<UserInfoProvider>();
+  bool isLoggedIn = await provider.isLogedin();
+  print('your states..........................${await provider.isLogedin()}');
 
   if (isLoggedIn) {
     print("User is logged in");

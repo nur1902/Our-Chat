@@ -16,10 +16,12 @@ String ?name;
 String ?email;
 String ?token;
 String ?profileUrl;
+Future<void> profile(BuildContext context)async{
 
-Future<void> profile()async{
-  List<dynamic> profileInfo=await UserInfoProvider.profileInfo();
-  name=profileInfo[0];
+  final provider = context.read<UserInfoProvider>();
+
+
+  List<dynamic> profileInfo=await provider.profileInfo();
   email=profileInfo[1];
   token=profileInfo[2];
   profileUrl=profileInfo[3];
@@ -29,24 +31,29 @@ Future<void> profile()async{
 }
 
 Future<void> logOut(BuildContext context) async{
+  final provider = context.read<UserInfoProvider>();
+
 
   showDialog(context: context, builder: (context) => AlertDialog(title: Text("you are signin out....."),
   actions: [
     TextButton(onPressed: (){
       Navigator.pop(context);
-    }, child: Text("Cancel"))
+    }, child: Text("Cancel")),
+    TextButton(onPressed: (){
+      provider.clearData;
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+    }, child: Text("proceed"))
   ],
   ),);
 
-  //UserInfoProvider.clearData;
-  //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LandingPage(),));
+
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    profile();
+    profile(context);
     super.initState();
   }
 
@@ -75,7 +82,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               height: 100,
                 width: 100,
                 //decoration: BoxDecoration(borderRadius: BorderRadius.circular(50) ),
-                child: Image.network("${profileUrl}",fit: BoxFit.fill,height: 20,width: 20,)
+                child: Image.network("${profileUrl}",fit: BoxFit.fill,height: 20,width: 20,),
             ),
           ],
         )),
