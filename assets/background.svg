@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" width="100%" height="100%">
+    <defs>
+        <!-- Vibrant Light Green Gradient Background -->
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f1f8e9"/>
+            <stop offset="50%" stop-color="#e8f5e9"/>
+            <stop offset="100%" stop-color="#C1FFC1"/>
+        </linearGradient>
+        
+        <!-- Very Subtle Dot Texture -->
+        <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="#a5d6a7" opacity="0.05"/>
+        </pattern>
+
+        <!-- Gradients for the main icon elements -->
+        <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#a5d6a7"/>
+            <stop offset="100%" stop-color="#81c784"/>
+        </linearGradient>
+        <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#c5e1a5"/>
+            <stop offset="100%" stop-color="#aed581"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Base Background Layer -->
+    <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+    <rect width="100%" height="100%" fill="url(#dots)"/>
+
+    <!-- Central Creative Icon: Interwoven Chat Vines & Blossoms -->
+    <g transform="translate(540, 830)" fill-opacity="0.25">
+        <!-- Main 'O' - Stylized interlocking bubbles and leaves -->
+        <path d="M -110 -110 h 140 a 40 40 0 0 1 40 40 v 70 a 40 40 0 0 1 -40 40 h -30 l -30 40 v -40 h -80 a 40 40 0 0 1 -40 -40 v -70 a 40 40 0 0 1 40 -40 z" 
+              fill="url(#iconGrad)" stroke="none"/>
+        <path d="M -150 -150 v -40 a 60 60 0 0 1 120 0 v 40 Z" fill="url(#iconGrad)" stroke="none" transform="rotate(-30)" />
+
+        <!-- Main 'C' - Emerging and connecting bubbles -->
+        <path d="M -10 -30 h 140 a 40 40 0 0 1 40 40 v 70 a 40 40 0 0 1 -40 40 h -30 l -30 40 v -40 h -80 a 40 40 0 0 1 -40 -40 v -70 a 40 40 0 0 1 40 -40 z" 
+              fill="url(#iconGrad)" stroke="none"/>
+        <circle cx="130" cy="-60" r="25" fill="url(#bubbleGrad)" stroke="none"/>
+        <polygon points="100,-20 160,-20 130,-70" fill="url(#bubbleGrad)" stroke="none"/>
+    </g>
+
+    <!-- Radiating Abstract Conversation Sprites (More Creative Touches) -->
+    <g fill="#81c784" fill-opacity="0.15">
+        <circle cx="650" cy="150" r="10"/>
+        <path d="M 640 160 l 20 0 l -10 20 Z"/>
+        <circle cx="200" cy="450" r="8"/>
+        <path d="M 190 460 l 20 0 l -10 20 Z"/>
+        <circle cx="850" cy="1100" r="12"/>
+        <path d="M 840 1110 l 20 0 l -10 20 Z"/>
+        <circle cx="150" cy="1500" r="9"/>
+        <path d="M 140 1510 l 20 0 l -10 20 Z"/>
+    </g>
+
+    <!-- Floating Bubble Details around central icon -->
+    <g fill="url(#bubbleGrad)" fill-opacity="0.12" transform="translate(540, 830)">
+        <circle cx="-160" cy="-180" r="15"/>
+        <circle cx="200" cy="-210" r="20"/>
+        <circle cx="-220" cy="180" r="18"/>
+        <circle cx="190" cy="160" r="16"/>
+    </g>
+
+    <!-- App Name and Slogan Watermark -->
+    <g transform="translate(540, 1080)" fill-opacity="0.25">
+        <text font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="#2c5364" text-anchor="middle" letter-spacing="8">OUR CHATS</text>
+        <text y="60" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="400" fill="#2c5364" text-anchor="middle" letter-spacing="2">Connected Conversations</text>
+    </g>
+
+</svg>
